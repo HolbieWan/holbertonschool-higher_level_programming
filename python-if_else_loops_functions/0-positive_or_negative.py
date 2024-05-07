@@ -7,4 +7,3 @@ elif number == 0:
     print(str(number) + " is zero")
 else:
     print(str(number) + " is positive")
-    
