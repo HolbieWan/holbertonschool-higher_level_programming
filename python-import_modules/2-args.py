@@ -13,5 +13,5 @@ def print_arguments(*args):
         print("{}: {}".format(i, args[i]))
 
 
-# Call the function with command-line arguments
-print_arguments(*sys.argv[1:])
+if __name__ == "__main__":
+    print_arguments(*sys.argv[1:])
