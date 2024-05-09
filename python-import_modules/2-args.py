@@ -6,7 +6,7 @@ def print_arguments(*args):
 
     num_arguments = len(args)
     if num_arguments == 0:
-        print("{} argument." .format(num_arguments))
+        print("{} arguments." .format(num_arguments))
     elif num_arguments == 1:
         print("{} argument:" .format(num_arguments))
     else:
