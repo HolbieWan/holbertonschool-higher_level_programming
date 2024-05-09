@@ -7,10 +7,12 @@ def print_arguments(*args):
     num_arguments = len(args)
     if num_arguments == 0:
         print("{} argument." .format(num_arguments))
+    elif num_arguments == 1:
+        print("{} argument:" .format(num_arguments))
     else:
         print("{} arguments:" .format(num_arguments))
-    for i in range(1, num_arguments):
-        print("{}: {}".format(i, args[i]))
+    for i in range(0, num_arguments):
+        print("{}: {}".format(i + 1, args[i]))
 
 
 if __name__ == "__main__":
