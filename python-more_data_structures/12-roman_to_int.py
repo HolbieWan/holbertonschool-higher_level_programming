@@ -5,6 +5,9 @@ def roman_to_int(roman_string):
     total = 0
     i = 0
 
+    if type(roman_string) != str or roman_string is None:
+        return 0
+
     while i < len(roman_string):
         value = roman_dict[roman_string[i]]
 
