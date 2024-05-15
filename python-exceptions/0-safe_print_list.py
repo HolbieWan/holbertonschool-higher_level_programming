@@ -8,11 +8,11 @@ def safe_print_list(my_list=[], x=0):
             nb_printed += 1
         print()
 
-    except TypeError as e:
-        print("An error occurred:", e)
+    except TypeError:
+        pass
 
     except IndexError:
-        print("Index out of range.")
+        pass
 
     finally:
         return nb_printed
