@@ -2,9 +2,9 @@
 
 def safe_print_list_integers(my_list=[], x=0):
     nb_printed = 0
-    for item in my_list[:x]:
+    for i in range(x):
         try:
-            print("{:d}".format(item), end="")
+            print("{:d}".format(my_list[i]), end="")
             nb_printed += 1
 
         except (ValueError, TypeError):
