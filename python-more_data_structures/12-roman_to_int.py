@@ -5,13 +5,14 @@ def roman_to_int(roman_string):
     total = 0
     i = 0
 
-    if type(roman_string) != str or roman_string is None:
+    if not isinstance(roman_string, str) or roman_string is None:
         return 0
 
     while i < len(roman_string):
         value = roman_dict[roman_string[i]]
 
-        if i + 1 < len(roman_string) and roman_dict[roman_string[i]] < roman_dict[roman_string[i + 1]]:
+        if i + 1 < len(roman_string) and roman_dict[roman_string[i]]\
+                < roman_dict[roman_string[i + 1]]:
             total -= value
         else:
             total += value
