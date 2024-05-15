@@ -10,7 +10,7 @@ def safe_print_list_integers(my_list=[], x=0):
             nb_printed += 1
         print()
 
-    except (TypeError, IndexError):
+    except TypeError:
         pass
 
     finally:
