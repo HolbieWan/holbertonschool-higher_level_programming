@@ -1,5 +1,4 @@
 #!/usr/bin/python3
-__import__('0-square') 
 """
     Represents a square with a given size.
 
@@ -9,7 +8,6 @@ __import__('0-square')
     Methods:
         __init__(self, size): Initializes a new Square instance with the given size.
     """
-
 class Square:
     def __init__(self, size):
         self.__size = size
