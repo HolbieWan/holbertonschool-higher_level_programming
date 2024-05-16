@@ -1,5 +1,8 @@
 #!/usr/bin/python3
-"""
+"""class: Square"""
+
+class Square:
+    """
     Represents a square with a given size.
 
     Attributes:
@@ -8,6 +11,6 @@
     Methods:
         __init__(self, size): Initializes a new Square instance with the given size.
     """
-class Square:
     def __init__(self, size):
+        """Initialisation of the class: Square"""
         self.__size = size
