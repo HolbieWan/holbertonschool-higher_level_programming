@@ -48,6 +48,9 @@ class Square:
         """Public instance method that prints the square with char # """
         if (self.__size == 0):
             print('')
+            return
+        for new_line in range(self.__position[1]):
+            print("")
         for x in range(self.__size):
             for space in range(self.__position[0]):
                 print(" ", end="")
