@@ -45,15 +45,13 @@ class Square:
         return self.__size ** 2
 
     def my_print(self):
-        """Public instance method that prints the square with char # """
-        if (self.__size == 0):
+        """Print the square with the character '#'. If size is 0, print an empty line."""
+        if self.__size == 0:
             print('')
             return
-        for new_line in range(self.__position[1]):
+        
+        for _ in range(self.__position[1]):
             print("")
-        for x in range(self.__size):
-            for space in range(self.__position[0]):
-                print(" ", end="")
-            for i in range(self.__size):
-                print("#", end="")
-            print('')
+
+        for _ in range(self.__size):
+            print(" " * self.__position[0] + "#" * self.__size)
