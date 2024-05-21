@@ -45,7 +45,7 @@
     ### div must be a number (integer or float)
 
     >>> matrix = [[1.2, 2.4, 3.6], [4.8, 5.0, 6.2]]
-    >>> matrix_divided(matrix, True)
+    >>> matrix_divided(matrix, "Test")
     Traceback (most recent call last):
     TypeError: div must be a number
 
