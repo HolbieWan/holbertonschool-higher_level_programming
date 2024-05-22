@@ -85,8 +85,7 @@ class Rectangle:
             if i < self.__height - 1:
                 rect_str += "\n"
         return rect_str
-    
+
     def __repr__(self):
         """__repr__ method for rectangle"""
         return f"Rectangle({self.__width}, {self.__height})"
-
