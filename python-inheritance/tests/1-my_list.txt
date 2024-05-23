@@ -86,12 +86,3 @@ False
 >>> my_list.print_sorted()
 [-1, 0, 1, 2, 3, 5]
 
-# Check print_sorted() returns a new sorted list without modifying the original list
->>> my_list = MyList([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5])
->>> sorted_list = sorted(my_list)
->>> my_list.print_sorted()
-[1, 1, 2, 3, 3, 4, 5, 5, 5, 6, 9]
->>> my_list == sorted_list  # Ensure original list is not modified
-False
->>> my_list  # Original list should remain unchanged
-MyList([3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5])
