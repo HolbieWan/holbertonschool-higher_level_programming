@@ -12,3 +12,23 @@ DocTest for '1-my_list' module
 >>> my_list = MyList([])
 >>> my_list.print_sorted()
 []
+
+# Test with negative numbers
+>>> test_list = MyList([3, -1, -4, 2])
+>>> test_list.print_sorted()
+[-4, -1, 2, 3]
+
+# Test with duplicate numbers
+>>> test_list = MyList([2, 3, 2, 1])
+>>> test_list.print_sorted()
+[1, 2, 2, 3]
+
+# Test with already sorted list
+>>> test_list = MyList([1, 2, 3, 4, 5])
+>>> test_list.print_sorted()
+[1, 2, 3, 4, 5]
+
+# Test with a single element
+>>> test_list = MyList([5])
+>>> test_list.print_sorted()
+[5]
