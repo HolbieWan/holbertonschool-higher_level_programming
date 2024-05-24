@@ -36,7 +36,7 @@ class Circle(Shape):
     def radius(self, value):
         """Set the radius ensuring it is non-negative."""
         if value < 0:
-            raise ValueError("Radius cannot be negative")
+            return
         self._radius = value
 
     def area(self):
@@ -69,7 +69,7 @@ class Rectangle(Shape):
     def width(self, value):
         """Set the width ensuring it is non-negative."""
         if value < 0:
-            raise ValueError("Width cannot be negative")
+            return
         self._width = value
 
     @property
@@ -81,7 +81,7 @@ class Rectangle(Shape):
     def height(self, value):
         """Set the height ensuring it is non-negative."""
         if value < 0:
-            raise ValueError("Height cannot be negative")
+            return
         self._height = value
 
     def area(self):
