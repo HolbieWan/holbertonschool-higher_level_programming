@@ -24,6 +24,8 @@ class Circle(Shape):
         """
         Initializes a new Circle instance with an optional radius
         """
+        if radius < 0:
+            raise ValueError("Radius cannot be negative")
         self.radius = radius
 
     def area(self):
@@ -31,6 +33,8 @@ class Circle(Shape):
         return (self.radius ** 2 * py_value)
 
     def perimeter(self):
+        if self.radius < 0:
+            raise ValueError("Perimeter calculation cannot be performed for negative radius")
         py_value = math.pi
         return (self.radius * 2 * py_value)
 
