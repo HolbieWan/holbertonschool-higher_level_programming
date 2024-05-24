@@ -24,9 +24,19 @@ class Circle(Shape):
 
     def __init__(self, radius):
         """Initialize with radius."""
-        if radius < 0:
-            raise ValueError("Radius cannot be negative")
         self.radius = radius
+
+    @property
+    def radius(self):
+        """Return the radius."""
+        return self._radius
+
+    @radius.setter
+    def radius(self, value):
+        """Set the radius ensuring it is non-negative."""
+        if value < 0:
+            raise ValueError("Radius cannot be negative")
+        self._radius = value
 
     def area(self):
         """Return the area."""
@@ -46,6 +56,30 @@ class Rectangle(Shape):
         """Initialize with width and height."""
         self.width = width
         self.height = height
+
+    @property
+    def width(self):
+        """Return the width."""
+        return self._width
+
+    @width.setter
+    def width(self, value):
+        """Set the width ensuring it is non-negative."""
+        if value < 0:
+            raise ValueError("Width cannot be negative")
+        self._width = value
+
+    @property
+    def height(self):
+        """Return the height."""
+        return self._height
+
+    @height.setter
+    def height(self, value):
+        """Set the height ensuring it is non-negative."""
+        if value < 0:
+            raise ValueError("Height cannot be negative")
+        self._height = value
 
     def area(self):
         """Return the area."""
