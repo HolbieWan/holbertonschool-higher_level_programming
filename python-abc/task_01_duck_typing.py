@@ -24,7 +24,8 @@ class Circle(Shape):
 
     def __init__(self, radius):
         """Initialize with radius."""
-        self.radius = radius
+        self._radius = None  # Initialize a private attribute
+        self.radius = radius  # Use the property setter for validation
 
     @property
     def radius(self):
@@ -54,7 +55,9 @@ class Rectangle(Shape):
 
     def __init__(self, width, height):
         """Initialize with width and height."""
-        self.width = width
+        self._width = None  # Initialize private attributes
+        self._height = None
+        self.width = width  # Use the property setters for validation
         self.height = height
 
     @property
