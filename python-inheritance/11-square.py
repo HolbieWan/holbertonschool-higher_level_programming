@@ -19,7 +19,7 @@ class Square(Rectangle):
 
     def __str__(self):
         """custom str method for print the rectangle"""
-        return "[Rectangle] " + str(self.__size) + "/" + str(self.__size)
+        return "[Square] " + str(self.__size) + "/" + str(self.__size)
 
     def area(self):
         """computes the area of the retangle"""
