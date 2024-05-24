@@ -34,7 +34,8 @@ class Circle(Shape):
 
     def perimeter(self):
         if self.radius < 0:
-            raise ValueError("Perimeter calculation cannot be performed for negative radius")
+            raise ValueError(
+                "Perimeter calculation cannot be performed for negative radius")
         py_value = math.pi
         return (self.radius * 2 * py_value)
 
