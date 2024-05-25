@@ -31,7 +31,7 @@ class Circle(Shape):
     def area(self):
         """Calculate the area of the circle."""
         py_value = math.pi
-        return (self.radius ** 2 * py_value)
+        return abs(self.radius ** 2 * py_value)
 
     def perimeter(self):
         """Calculate the perimeter of the circle."""
@@ -39,7 +39,7 @@ class Circle(Shape):
             raise ValueError(
                 "Perimeter calculation cannot be performed for negative radius")
         py_value = math.pi
-        return (self.radius * 2 * py_value)
+        return abs(self.radius * 2 * py_value)
 
 
 class Rectangle(Shape):
