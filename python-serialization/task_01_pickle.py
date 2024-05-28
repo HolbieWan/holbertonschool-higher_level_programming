@@ -24,12 +24,21 @@ class CustomObject:
 
     def serialize(self, filename):
         """Function to serialize a Python object to a pickle file"""
-        with open(filename, 'wb') as file:
-            pickle.dump(self, file)
+        try:
+            with open(filename, 'wb') as file:
+                My_serialized_pickle = pickle.dump(self, file)
+                return My_serialized_pickle
+        except (pickle.PicklingError) as e:
+            print("Serialization error: {}".format(e))
+            return None
 
     @classmethod
     def deserialize(cls, filename):
         """Function to deserialize a pickle file to a Python object"""
-        with open(filename, 'rb') as file:
-            my_dict_deserialized = pickle.load(file)
-        return (my_dict_deserialized)
+        try:
+            with open(filename, 'rb') as file:
+                My_deserialized_pickle = pickle.load(file)
+            return My_deserialized_pickle
+        except (pickle.UnpicklingError) as e:
+            print("Deserialization error: {}".format(e))
+            return None
