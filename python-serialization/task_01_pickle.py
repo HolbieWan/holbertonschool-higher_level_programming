@@ -29,7 +29,6 @@ class CustomObject:
                 My_serialized_pickle = pickle.dump(self, file)
                 return My_serialized_pickle
         except (OSError, pickle.PicklingError) as e:
-            print("Serialization error: {}".format(e))
             return None
 
     @classmethod
@@ -40,5 +39,4 @@ class CustomObject:
                 My_deserialized_pickle = pickle.load(file)
             return My_deserialized_pickle
         except (OSError, pickle.UnpicklingError) as e:
-            print("Deserialization error: {}".format(e))
             return None
