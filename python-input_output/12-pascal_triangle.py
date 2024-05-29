@@ -12,9 +12,12 @@ def pascal_triangle(n):
 
     for i in range(1, n):
         new_row = [1]
+        
         for j in range(1, i):
-            new_value = \
-                pascal_triangle[i - 1][j - 1] + pascal_triangle[i - 1][j]
+
+            new_value = pascal_triangle[i - 1][j - 1]
+            + pascal_triangle[i - 1][j]
+
             new_row.append(new_value)
         new_row.append(1)
         pascal_triangle.append(new_row)
