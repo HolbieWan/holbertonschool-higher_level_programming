@@ -9,7 +9,8 @@ def serialize_to_xml(dictionary, filename):
     and save it to the given filename"""
     root = ET.Element("data")  # Create the root element
     for key, value in dictionary.items():
-        ET.SubElement(root, key).text = value  # Add each key-value pair
+        sub_element = ET.SubElement(root, key)
+        sub_element.text = value # Add each key-value pair
 
     tree = ET.ElementTree(root)  # Create an ElementTree object
     tree.write(filename, encoding='utf-8')
