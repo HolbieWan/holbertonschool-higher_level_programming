@@ -15,12 +15,9 @@ def convert_csv_to_json(filename):
                 csv_list.append(row)
 
         with open("data.json", mode='w') as json_file:
-            json_file.write('[\n')
-            for i, item in enumerate(csv_list):
-                json.dump(item, json_file)
-                if i < len(csv_list) - 1:
-                    json_file.write(',\n')
-            json_file.write('\n]')
+            for item in csv_list:
+                json.dump(item, json_file, indent=4)
+                json_file.write('\n')
 
     except FileNotFoundError:
         return False
