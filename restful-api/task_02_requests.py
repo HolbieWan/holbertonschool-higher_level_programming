@@ -30,12 +30,16 @@ def fetch_and_save_posts():
         posts = response.json()
         posts_dict_list = []
         for post in posts:
-            posts_dict_list.append({'Post ID': post['id'] , 'Title': post['title'], 'Body': post['body']})
+            posts_dict_list.append(
+                {'Post ID': post['id'], 'Title': post['title'], 'Body': post['body']})
         csv_file = 'posts.csv'
         with open(csv_file, mode='w', newline='') as file:
-            new_instance = csv.DictWriter(file, fieldnames=['Post ID', 'Title', 'Body'])
+            new_instance = csv.DictWriter(
+                file, fieldnames=[
+                    'Post ID', 'Title', 'Body'])
             new_instance.writeheader()
-            new_instance.writerows(posts_dict_list)        
+            new_instance.writerows(posts_dict_list)
+
 
 """
 def print_csv_content(csv_file):
