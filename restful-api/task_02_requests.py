@@ -13,9 +13,9 @@ def fetch_and_print_posts():
     if response.status_code == 200:
         posts = response.json()
         for post in posts:
-            print("Post ID: {}".format(post['id']))
-            print("Title: {}".format(post['title']))
-            print("Body: {}\n".format(post['body']))
+            # print("Post ID: {}".format(post['id']))
+            print("{}".format(post['title']))
+            # print("Body: {}\n".format(post['body']))
     else:
         print(
             "Failed to fetch posts. Status code: {}".format(
