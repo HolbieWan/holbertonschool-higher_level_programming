@@ -28,10 +28,9 @@ def fetch_and_save_posts():
     print("Status Code: {}".format(response.status_code))
     if response.status_code == 200:
         posts = response.json()
-        posts_dict_list = []
-        for post in posts:
-            posts_dict_list.append(
-                {'Post ID': post['id'], 'Title': post['title'], 'Body': post['body']})
+        posts_dict_list = [{'Post ID': post['id'],
+                            'Title': post['title'],
+                            'Body': post['body']} for post in posts]
         csv_file = 'posts.csv'
         with open(csv_file, mode='w', newline='') as file:
             new_instance = csv.DictWriter(
