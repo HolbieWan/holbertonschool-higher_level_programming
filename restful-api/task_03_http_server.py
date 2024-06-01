@@ -6,7 +6,7 @@ import json
 
 
 class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
-    """custom Handler for server requests"""
+    """custom Handler subclass for server requests"""
 
     def do_GET(self):
         """Method to set custom responses for the get requests """
@@ -46,10 +46,11 @@ class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
             }
             self.wfile.write(json.dumps(error_message).encode('utf-8'))
 
+if __name__ == "__main__":
 
-PORT = 8000
-Handler = CustomRequestHandler
+    PORT = 8000
+    Handler = CustomRequestHandler
 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("serving at port", PORT)
-    httpd.serve_forever()
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        print("serving at port", PORT)
+        httpd.serve_forever()
