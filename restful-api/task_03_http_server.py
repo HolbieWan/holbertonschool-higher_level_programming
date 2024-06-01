@@ -1,9 +1,13 @@
 #!/usr/bin/python3
+"""Creating a simple server Module"""
 import http.server
 import socketserver
 import json
 
+
 class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
+    """custom Handler for server requests"""
+
     def do_GET(self):
         if self.path == '/':
             self.send_response(200)
@@ -23,8 +27,8 @@ class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_header('Content-type', 'application/json')
             self.end_headers()
             sample_info = {
-                "version": "1.0", "description": "A simple API built with http.server"
-            }
+                "version": "1.0",
+                "description": "A simple API built with http.server"}
             self.wfile.write(json.dumps(sample_info).encode('utf-8'))
         elif self.path == '/status':
             self.send_response(200)
@@ -40,6 +44,7 @@ class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
                 'message': 'Endpoint not found'
             }
             self.wfile.write(json.dumps(error_message).encode('utf-8'))
+
 
 PORT = 8000
 Handler = CustomRequestHandler
