@@ -9,6 +9,7 @@ class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
     """custom Handler for server requests"""
 
     def do_GET(self):
+        """Method to set custom responses for the get requests """
         if self.path == '/':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
