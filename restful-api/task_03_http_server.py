@@ -1,11 +1,10 @@
 #!/usr/bin/python3
 """Creating a simple server Module"""
-import http.server
-import socketserver
+from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 
 
-class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
+class CustomRequestHandler(BaseHTTPRequestHandler):
     """custom Handler subclass for server requests"""
 
     def do_GET(self):
@@ -19,9 +18,7 @@ class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
             self.end_headers()
-            sample_data = {
-                "name": "John", "age": 30, "city": "New York"
-            }
+            sample_data = {"name": "John", "age": 30, "city": "New York"}
             self.wfile.write(json.dumps(sample_data).encode('utf-8'))
         elif self.path == '/info':
             self.send_response(200)
@@ -47,6 +44,6 @@ if __name__ == "__main__":
     PORT = 8000
     Handler = CustomRequestHandler
 
-    with socketserver.TCPServer(("", PORT), Handler) as httpd:
-        print("serving at port", PORT)
-        httpd.serve_forever()
+    httpd = HTTPServer(('', 8000), Handler)
+    print("serving at port", 8000)
+    httpd.serve_forever()
