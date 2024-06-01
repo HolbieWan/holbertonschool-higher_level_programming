@@ -43,9 +43,10 @@ class CustomRequestHandler(http.server.BaseHTTPRequestHandler):
             self.wfile.write(b"Endpoint not found")
 
 
-PORT = 8000
-Handler = CustomRequestHandler
+if __name__ == "__main__":
+    PORT = 8000
+    Handler = CustomRequestHandler
 
-with socketserver.TCPServer(("", PORT), Handler) as httpd:
-    print("serving at port", PORT)
-    httpd.serve_forever()
+    with socketserver.TCPServer(("", PORT), Handler) as httpd:
+        print("serving at port", PORT)
+        httpd.serve_forever()
