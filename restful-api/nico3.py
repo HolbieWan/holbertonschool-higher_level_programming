@@ -7,6 +7,7 @@ import json
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     """Defines the subclass SimpleHTTPRequestHandler,
     that inherites from BaseHTTPRequestHandler"""
+
     def do_GET(self):
         """Method that override the GET method, handles various endpoints"""
         if self.path == '/':

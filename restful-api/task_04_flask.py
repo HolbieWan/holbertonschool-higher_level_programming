@@ -6,7 +6,7 @@ from markupsafe import escape
 
 app = Flask(__name__)
 
-users = {"jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"}, "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}}
+users = {}
 
 
 @app.route('/')
@@ -17,7 +17,7 @@ def home():
 
 @app.route('/data')
 def data():
-    """Endpoint returning a JSON response with all users dictionary keys (usernames)"""
+    """Endpoint returning a JSON response with dictionary keys (usernames)"""
     names = list(users.keys())
     return jsonify(names)
 
@@ -53,6 +53,7 @@ def add_user():
     new_user['username'] = username
     users[username] = new_user
     return jsonify({'message': 'User added', 'user': new_user}), 201
+
 
 if __name__ == "__main__":
     app.run()
