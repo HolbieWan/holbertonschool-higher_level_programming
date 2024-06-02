@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 """Creating a simple server Module"""
 
-from flask import Flask, jsonify, abort, request
+from flask import Flask, jsonify, request
 
 app = Flask(__name__)
 
@@ -42,9 +42,8 @@ def get_user(username):
     """Endpoint returning a JSON response with the user details"""
     user = users.get(username)
     if user is None:
-        abort(404, description="User not found")
+        return jsonify({"error": "User not found"}), 404
     return jsonify(user)
-    self.wfile.write(json.dumps(sample_data).encode('utf-8'))
 
 
 @app.route('/add_user', methods=['POST'])
@@ -57,11 +56,8 @@ def add_user():
     if username in users:
         return jsonify({"error": "User already exists"}), 400
     users[username] = new_user
-    return jsonify({
-        'message': 'User added',
-        'user': new_user
-    }), 201
+    return jsonify({'message': 'User added', 'user': new_user}), 201
 
 
 if __name__ == "__main__":
-    app.run(port=8000)
+    app.run()
