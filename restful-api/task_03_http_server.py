@@ -36,7 +36,7 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
             self.end_headers()
             self.wfile.write(b"OK")
         else:
-            self.send_error(404, description="Not found")
+            self.send_error(404, "Endpoint not found")
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"Endpoint not found")
@@ -46,6 +46,6 @@ if __name__ == "__main__":
     PORT = 8000
     Handler = CustomRequestHandler
 
-    httpd = HTTPServer(('', 8000), CustomRequestHandler)
-    print("serving at port", 8000)
+    httpd = HTTPServer(('', PORT), CustomRequestHandler)
+    print("serving at port", PORT)
     httpd.serve_forever()

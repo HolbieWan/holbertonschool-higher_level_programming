@@ -44,6 +44,7 @@ def get_user(username):
     if user is None:
         abort(404, description="User not found")
     return jsonify(user)
+    self.wfile.write(json.dumps(sample_data).encode('utf-8'))
 
 
 @app.route('/add_user', methods=['POST'])
