@@ -5,7 +5,17 @@ from flask import Flask, jsonify, abort, request
 
 app = Flask(__name__)
 
-users = {}
+users = {
+    "jane": {
+        "username": "jane",
+        "name": "Jane",
+        "age": 28,
+        "city": "Los Angeles"},
+    "john": {
+        "username": "john",
+        "name": "John",
+        "age": 30,
+        "city": "New York"}}
 
 
 @app.route('/')
@@ -39,7 +49,7 @@ def get_user(username):
 @app.route('/add_user', methods=['POST'])
 def add_user():
     """Endpoint to add a new user"""
-    new_user = request.json
+    new_user = request.get_json
     username = new_user['username']
     if not username:
         return jsonify({"error": "Username is required"}), 400
