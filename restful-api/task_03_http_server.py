@@ -31,7 +31,7 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
             sample_info = {
                 "version": "1.0",
                 "description": "A simple API built with http.server"
-                }
+            }
             self.wfile.write(json.dumps(sample_info).encode('utf-8'))
         elif self.path == '/status':
             self.send_response(200)
@@ -46,9 +46,6 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    PORT = 8000
-    Handler = CustomRequestHandler
-
-    httpd = HTTPServer(('localhost', PORT), CustomRequestHandler)
-    print("serving at port", PORT)
+    httpd = HTTPServer(('', 8000), CustomRequestHandler)
+    print("serving at port", 8000)
     httpd.serve_forever()
