@@ -4,7 +4,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 
 
-class CustomRequestHandler(BaseHTTPRequestHandler):
+class SimpleRequestHandler(BaseHTTPRequestHandler):
     """custom Handler subclass for server requests"""
 
     def do_GET(self):
@@ -42,10 +42,10 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
             self.send_error(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b"404 Not Found")
+            self.wfile.write(b"Endpoint not Found")
 
 
 if __name__ == "__main__":
-    httpd = HTTPServer(('', 8000), CustomRequestHandler)
+    httpd = HTTPServer(('localhost', 8000), SimpleRequestHandler)
     print("serving at port", 8000)
     httpd.serve_forever()
