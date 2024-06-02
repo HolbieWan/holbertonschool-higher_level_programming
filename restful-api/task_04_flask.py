@@ -5,7 +5,17 @@ from flask import Flask, jsonify, abort, request
 
 app = Flask(__name__)
 
-users = {}
+users = {
+    "jane": {
+        "username": "jane",
+        "name": "Jane",
+        "age": 28,
+        "city": "Los Angeles"},
+    "john": {
+        "username": "john",
+        "name": "John",
+        "age": 30,
+        "city": "New York"}}
 
 
 @app.route('/')
@@ -16,8 +26,8 @@ def home():
 
 @app.route('/data')
 def data():
-    """Endpoint returning a JSON response with all usernames"""
-    names = [user["name"] for user in users.values()]
+    """Endpoint returning a JSON response with all users dictionary keys (usernames)"""
+    names = list(users.keys())
     return jsonify(names)
 
 
@@ -41,11 +51,15 @@ def add_user():
     """Endpoint to add a new user"""
     new_user = request.json
     username = new_user['username']
+    if not username:
+        return jsonify({"error": "Username is required"}), 400
+    if username in users:
+        return jsonify({"error": "User already exists"}), 400
     users[username] = new_user
     return jsonify({
         'message': 'User added',
         'user': new_user
-    })
+    }), 201
 
 
 if __name__ == "__main__":
