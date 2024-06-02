@@ -4,7 +4,7 @@ from http.server import HTTPServer, BaseHTTPRequestHandler
 import json
 
 
-class SimpleRequestHandler(BaseHTTPRequestHandler):
+class CustomRequestHandler(BaseHTTPRequestHandler):
     """custom Handler subclass for server requests"""
 
     def do_GET(self):
@@ -46,6 +46,6 @@ class SimpleRequestHandler(BaseHTTPRequestHandler):
 
 
 if __name__ == "__main__":
-    httpd = HTTPServer(('localhost', 8000), SimpleRequestHandler)
+    httpd = HTTPServer(('localhost', 8000), CustomRequestHandler)
     print("serving at port", 8000)
     httpd.serve_forever()
