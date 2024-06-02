@@ -46,6 +46,6 @@ if __name__ == "__main__":
     PORT = 8000
     Handler = CustomRequestHandler
 
-    httpd = HTTPServer(('', PORT), CustomRequestHandler)
+    httpd = HTTPServer(('localhost', PORT), CustomRequestHandler)
     print("serving at port", PORT)
     httpd.serve_forever()
