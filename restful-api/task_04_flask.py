@@ -2,10 +2,11 @@
 """Creating a simple server Module"""
 
 from flask import Flask, jsonify, request
+from markupsafe import escape
 
 app = Flask(__name__)
 
-users = {}
+users = {"jane": {"username": "jane", "name": "Jane", "age": 28, "city": "Los Angeles"}, "john": {"username": "john", "name": "John", "age": 30, "city": "New York"}}
 
 
 @app.route('/')
@@ -30,8 +31,9 @@ def status():
 @app.route('/users/<username>')
 def get_user(username):
     """Endpoint returning a JSON response with the user details"""
+    username = escape(username)
     user = users.get(username)
-    if user is None:
+    if not user:
         return jsonify({"error": "User not found"}), 404
     return jsonify(user)
 
@@ -39,15 +41,18 @@ def get_user(username):
 @app.route('/add_user', methods=['POST'])
 def add_user():
     """Endpoint to add a new user"""
-    new_user = request.get_json
-    username = new_user['username']
+    new_user = request.get_json()
+    if not new_user:
+        return jsonify({"error": "Invalid JSON data"}), 400
+    username = new_user.get('username')
     if not username:
         return jsonify({"error": "Username is required"}), 400
     if username in users:
         return jsonify({"error": "User already exists"}), 400
+    username = escape(username)
+    new_user['username'] = username
     users[username] = new_user
     return jsonify({'message': 'User added', 'user': new_user}), 201
-
 
 if __name__ == "__main__":
     app.run()
