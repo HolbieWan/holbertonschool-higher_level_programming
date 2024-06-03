@@ -28,4 +28,4 @@ jobs:
         with:
           context: .
           push: true
-          tags: ghcr.io/HolbieWan/Docker:latest
+          tags: ghcr.io/HolbieWan/docker:latest
