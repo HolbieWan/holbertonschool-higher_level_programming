@@ -6,6 +6,7 @@ from werkzeug.security import generate_password_hash
 
 from Test_authentication import app
 
+
 class AuthenticationTestCase(unittest.TestCase):
     def setUp(self):
         self.app = app.test_client()
@@ -15,7 +16,10 @@ class AuthenticationTestCase(unittest.TestCase):
         valid_credentials = ('john', 'hello')
 
         # Send a GET request to /
-        response = self.app.get('/', headers=self.get_auth_header(*valid_credentials))
+        response = self.app.get(
+            '/',
+            headers=self.get_auth_header(
+                *valid_credentials))
 
         # Check the response status code and content
         self.assertEqual(response.status_code, 200)
@@ -26,17 +30,20 @@ class AuthenticationTestCase(unittest.TestCase):
         invalid_credentials = ('john', 'wrong_password')
 
         # Send a GET request to /
-        response = self.app.get('/', headers=self.get_auth_header(*invalid_credentials))
+        response = self.app.get(
+            '/',
+            headers=self.get_auth_header(
+                *invalid_credentials))
 
         # Check the response status code and content
         self.assertEqual(response.status_code, 401)
 
     def get_auth_header(self, username, password):
         # Generate Basic Auth header
-        auth_header = {
-            'Authorization': 'Basic ' + generate_password_hash(f'{username}:{password}')
-        }
+        auth_header = {'Authorization': 'Basic ' +
+                       generate_password_hash(f'{username}:{password}')}
         return auth_header
+
 
 if __name__ == '__main__':
     unittest.main()

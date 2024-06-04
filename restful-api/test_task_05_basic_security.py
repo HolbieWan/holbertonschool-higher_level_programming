@@ -3,6 +3,7 @@ import unittest
 from flask import Flask
 from flask.testing import FlaskClient
 
+
 class LoginTestCase(unittest.TestCase):
     def setUp(self):
         self.app = Flask(__name__)
@@ -26,7 +27,10 @@ class LoginTestCase(unittest.TestCase):
         self.app.users = users
 
         # Send a POST request to /login with valid credentials
-        response = self.client.post('/login', data=json.dumps(valid_credentials), content_type='application/json')
+        response = self.client.post(
+            '/login',
+            data=json.dumps(valid_credentials),
+            content_type='application/json')
 
         # Check the response status code and content
         self.assertEqual(response.status_code, 200)
@@ -49,7 +53,10 @@ class LoginTestCase(unittest.TestCase):
         self.app.users = users
 
         # Send a POST request to /login with invalid credentials
-        response = self.client.post('/login', data=json.dumps(invalid_credentials), content_type='application/json')
+        response = self.client.post(
+            '/login',
+            data=json.dumps(invalid_credentials),
+            content_type='application/json')
 
         # Check the response status code and content
         self.assertEqual(response.status_code, 401)
@@ -60,11 +67,17 @@ class LoginTestCase(unittest.TestCase):
         missing_credentials = {}
 
         # Send a POST request to /login with missing credentials
-        response = self.client.post('/login', data=json.dumps(missing_credentials), content_type='application/json')
+        response = self.client.post(
+            '/login',
+            data=json.dumps(missing_credentials),
+            content_type='application/json')
 
         # Check the response status code and content
         self.assertEqual(response.status_code, 400)
-        self.assertEqual(response.json, {"error": "Username and password required"})
+        self.assertEqual(
+            response.json, {
+                "error": "Username and password required"})
+
 
 if __name__ == '__main__':
     unittest.main()
