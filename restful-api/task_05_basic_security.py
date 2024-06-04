@@ -29,8 +29,9 @@ def basic_protected():
 
 @app.route('/login', methods=['POST'])
 def login():
-    username = request.json.get('username')
-    password = request.json.get('password')
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
     if not username or not password:
         return jsonify({"error": "Username and password required"}), 400
     user = users.get(username)
