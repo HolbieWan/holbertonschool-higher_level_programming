@@ -42,7 +42,7 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
             self.send_error(404, "Not Found")
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
-            self.wfile.write(b"Endpoint not found")
+            self.wfile.write(b"404 Not Found")
 
 
 if __name__ == "__main__":
