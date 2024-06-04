@@ -27,10 +27,10 @@ def verify_password(username, password):
         return username
 
 
-@app.route('/basic-protected')
+@app.route('/basic-protected', methods=["GET"])
 @auth.login_required
 def basic_protected():
-    return jsonify({"msg": "Basic Auth: Access Granted"})
+    return "Basic Auth: Access Granted"
 
 
 @app.route('/login', methods=['POST'])
@@ -47,13 +47,13 @@ def login():
     return jsonify({"error": "Invalid credentials"}), 401
 
 
-@app.route('/jwt-protected')
+@app.route('/jwt-protected', methods=["GET"])
 @jwt_required()
 def jwt_protected():
     return "JWT Auth: Access Granted"
 
 
-@app.route('/admin-only')
+@app.route('/admin-only', methods=["GET"])
 @jwt_required()
 def admin_only():
     current_user = get_jwt_identity()
