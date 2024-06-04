@@ -40,14 +40,9 @@ def get_user(username):
 def add_user():
     """Endpoint to add a new user"""
     new_user = request.get_json()
-    if not new_user:
-        return jsonify({"error": "Invalid JSON data"}), 400
     username = new_user.get('username')
     if not username:
         return jsonify({"error": "Username is required"}), 400
-    if username in users:
-        return jsonify({"error": "User already exists"}), 400
-    new_user['username'] = username
     users[username] = new_user
     return jsonify({'message': 'User added', 'user': new_user}), 201
 
