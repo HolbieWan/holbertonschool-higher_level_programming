@@ -31,8 +31,8 @@ def get_all_N_states():
 
     # Perform a SELECT query
     my_query = "SELECT * FROM states WHERE\
-        name = %s ORDER BY id ASC"
-    cursor.execute(my_query, (state_name,))
+        name = '{}' ORDER BY id ASC".format(state_name)
+    cursor.execute(my_query)
     rows = cursor.fetchall()
 
     for row in rows:
