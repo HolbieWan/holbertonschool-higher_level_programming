@@ -4,6 +4,7 @@
 import MySQLdb
 import sys
 
+
 def get_all_states():
     """Method that lists all states from the database hbtn_0e_0_usa"""
 
@@ -29,7 +30,7 @@ def get_all_states():
     my_query = "SELECT * FROM states ORDER BY id ASC"
     cursor.execute(my_query)
     rows = cursor.fetchall()
-    
+
     for row in rows:
         print(row)
 
