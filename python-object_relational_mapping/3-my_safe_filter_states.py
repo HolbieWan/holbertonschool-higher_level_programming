@@ -8,8 +8,8 @@ import sys
 
 
 def get_all_N_states():
-    """Method that takes in arguments and displays all values in the states table
- of hbtn_0e_0_usa where name matches the argument"""
+    """Method that takes in arguments and displays all values in the states
+    table of hbtn_0e_0_usa where name matches the argument"""
 
     # Database connection parameters
     host = 'localhost'
