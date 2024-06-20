@@ -31,7 +31,7 @@ def get_all_N_states():
 
     # Perform a SELECT query
     my_query = "SELECT * FROM states WHERE\
-        name = '{}' ORDER BY id ASC".format(state_name)
+        BINARY name = '{}' ORDER BY id ASC".format(state_name)
     cursor.execute(my_query)
     rows = cursor.fetchall()
 
