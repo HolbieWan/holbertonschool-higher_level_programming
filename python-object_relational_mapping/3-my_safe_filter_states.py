@@ -1,14 +1,15 @@
 #!/usr/bin/python3
-"""script that takes in an argument and displays all values 
-in the states table of hbtn_0e_0_usa where name matches the argument."""
+"""script that takes in arguments and displays all values in the states table
+ of hbtn_0e_0_usa where name matches the argument.
+ But this time, write one that is safe from MySQL injections"""
 
 import MySQLdb
 import sys
 
 
 def get_all_N_states():
-    """Method that takes in an argument and displays all values
-    in the states table of hbtn_0e_0_usa where name matches the argument."""
+    """Method that takes in arguments and displays all values in the states table
+ of hbtn_0e_0_usa where name matches the argument"""
 
     # Database connection parameters
     host = 'localhost'
@@ -31,8 +32,8 @@ def get_all_N_states():
 
     # Perform a SELECT query
     my_query = "SELECT * FROM states WHERE\
-        BINARY name = '{}' ORDER BY id ASC".format(state_name)
-    cursor.execute(my_query)
+        name = %s ORDER BY id ASC"
+    cursor.execute(my_query, (state_name,))
     rows = cursor.fetchall()
 
     for row in rows:
