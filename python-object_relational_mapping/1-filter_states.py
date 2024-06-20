@@ -29,7 +29,7 @@ def get_all_N_states():
     cursor = conn.cursor()
 
     # Perform a SELECT query
-    my_query = "SELECT * FROM states WHERE name LIKE 'N%' ORDER BY id ASC"
+    my_query = "SELECT * FROM states WHERE BINARY name LIKE 'N%' ORDER BY id ASC"
     cursor.execute(my_query)
     rows = cursor.fetchall()
 
