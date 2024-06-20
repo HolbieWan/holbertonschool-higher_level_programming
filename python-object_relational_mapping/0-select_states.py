@@ -2,15 +2,16 @@
 """Script that lists all states from the database hbtn_0e_0_usa"""
 
 import MySQLdb
+import sys
 
 def get_all_states():
     """Method that lists all states from the database hbtn_0e_0_usa"""
 
     # Database connection parameters
     host = 'localhost'
-    user = ''
-    password = ''
-    database = 'hbtn_0e_0_usa'
+    user = sys.argv[1]
+    password = sys.argv[2]
+    database = sys.argv[3]
     port = 3306
 
     # Establish the connection
