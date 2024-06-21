@@ -27,7 +27,7 @@ def get_all_cities_by_states():
     cursor = conn.cursor()
 
     # Perform a SELECT query
-    my_query = "SELECT * FROM cities\
+    my_query = "SELECT cities.id, cities.name FROM cities\
         INNER JOIN states ON cities.state_id = states.id\
         ORDER BY cities.id ASC"
     cursor.execute(my_query)
