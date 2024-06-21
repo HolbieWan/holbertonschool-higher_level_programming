@@ -6,7 +6,7 @@ import MySQLdb
 import sys
 
 
-def get_all_N_states():
+def get_matching_states():
     """Method that takes in an argument and displays all values
     in the states table of hbtn_0e_0_usa where name matches the argument."""
 
@@ -44,4 +44,4 @@ def get_all_N_states():
 
 
 if __name__ == "__main__":
-    get_all_N_states()
+    get_matching_states()

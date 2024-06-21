@@ -1,22 +1,18 @@
 #!/usr/bin/python3
-"""script that takes in arguments and displays all values in the states table
- of hbtn_0e_0_usa where name matches the argument.
- But this time, write one that is safe from MySQL injections"""
+"""script that lists all cities from the database hbtn_0e_4_usa"""
 
 import MySQLdb
 import sys
 
 
-def get_matching_states():
-    """Method that takes in arguments and displays all values in the states
-    table of hbtn_0e_0_usa where name matches the argument"""
+def get_all_cities_by_states():
+    """Method that lists all cities from the database hbtn_0e_4_usa"""
 
     # Database connection parameters
     host = 'localhost'
     user = sys.argv[1]
     password = sys.argv[2]
     database = sys.argv[3]
-    state_name = sys.argv[4]
     port = 3306
 
     # Establish the connection
@@ -31,9 +27,10 @@ def get_matching_states():
     cursor = conn.cursor()
 
     # Perform a SELECT query
-    my_query = "SELECT * FROM states WHERE\
-        name = %s ORDER BY id ASC"
-    cursor.execute(my_query, (state_name,))
+    my_query = "SELECT * FROM cities\
+        INNER JOIN states ON cities.state_id = states.id\
+        ORDER BY cities.id ASC"
+    cursor.execute(my_query)
     rows = cursor.fetchall()
 
     for row in rows:
@@ -45,4 +42,4 @@ def get_matching_states():
 
 
 if __name__ == "__main__":
-    get_matching_states()
+    get_all_cities_by_states()
