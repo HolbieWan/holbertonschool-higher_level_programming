@@ -24,6 +24,6 @@ if __name__ == "__main__":
         State, City.state_id == State.id).all()
 
     for city, state in result:
-        print(f'{state.name}: {city.id} {city.name}')
+        print(f'{state.name}: {(city.id)} {city.name}')
 
     session.close()
