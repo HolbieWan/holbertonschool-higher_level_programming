@@ -2,7 +2,7 @@
 """Defines a State model for a database table.
 """
 import sys
-from sqlalchemy import create_engine, Column, Integer, String
+from sqlalchemy import Column, Integer, String
 from sqlalchemy.ext.declarative import declarative_base
 
 # Create a Base instance for declarative class definitions
