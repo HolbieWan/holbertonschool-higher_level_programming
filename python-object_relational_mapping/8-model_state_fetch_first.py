@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Start link class to table in database
+"""Fetch the first State object from states table in the database hbtn_0e_6_usa
 """
 import sys
 from sqlalchemy import create_engine
@@ -19,10 +19,10 @@ if __name__ == "__main__":
     session = Session()
 
     first_state = session.query(State).first()
-    
+
     if first_state:
         print(f'{first_state.id}: {first_state.name}')
     else:
         print("Nothing")
-    
+
     session.close()

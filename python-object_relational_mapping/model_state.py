@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Start link class to table in database
+"""Defines a State model for a database table.
 """
 import sys
 from sqlalchemy import create_engine, Column, Integer, String

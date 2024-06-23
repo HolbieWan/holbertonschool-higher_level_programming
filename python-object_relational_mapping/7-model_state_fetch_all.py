@@ -1,5 +1,5 @@
 #!/usr/bin/python3
-"""Start link class to table in database
+"""Fetch and print all rows from states table using SQLAlchemy
 """
 import sys
 from sqlalchemy.orm import sessionmaker
