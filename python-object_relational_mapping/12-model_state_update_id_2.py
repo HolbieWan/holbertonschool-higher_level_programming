@@ -1,5 +1,6 @@
 #!/usr/bin/python3
-"""Adds and print new row for State tale from the database hbtn_0e_6_usa
+"""Fetch and prints the State object with the name passed as
+ argument from the database hbtn_0e_6_usa
 """
 import sys
 from sqlalchemy import create_engine
@@ -18,23 +19,15 @@ if __name__ == "__main__":
     Session = sessionmaker(bind=engine)
     session = Session()
 
-    # Add rows to the state table
-    new_states = [
-        State(name="Louisiana")
-    ]
+    new_state_name = 'New Mexico'
 
-    # Add the new states to the session
-    session.add_all(new_states)
+    update_state_name = session.query(State).filter(
+        State.id == 2).all()
 
-    # Commit the transaction to the database
-    session.commit()
-
-    state_like_louisiana = session.query(State).filter(
-        State.name == 'Louisiana').all()
-
-    if state_like_louisiana:
-        for State in state_like_louisiana:
-            print(f'{State.id}')
+    if update_state_name:
+        for State in update_state_name:
+            State.name = new_state_name
+            session.commit()
     else:
         print("Not found")
 
