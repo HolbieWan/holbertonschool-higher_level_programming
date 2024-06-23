@@ -25,5 +25,7 @@ if __name__ == "__main__":
     if state_like_argv:
         for State in state_like_argv:
             print(f'{State.id}')
+    else:
+        print("Not found")
 
     session.close()
