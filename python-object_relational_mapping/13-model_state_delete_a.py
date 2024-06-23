@@ -26,7 +26,7 @@ if __name__ == "__main__":
     if delete_state_with_a:
         for State in delete_state_with_a:
             session.delete(State)
-            session.commit()
+        session.commit()
     else:
         print("Not found")
 
