@@ -27,7 +27,7 @@ def generate_invitations(template, attendees):
             name_value = attendee.get("name") or "N/A"
             event_title_value = attendee.get("event_title") or "N/A"
             event_date_value = attendee.get("event_date") or "N/A"
-            event_location_value = attendee.get("event_location")
+            event_location_value = attendee.get("event_location") or "N/A"
             
             result = template.replace(name_placeholder, name_value).replace(event_title_placeholder, event_title_value).replace(event_date_placeholder, event_date_value).replace(event_location_placeholder, event_location_value)
             
