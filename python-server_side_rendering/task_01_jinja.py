@@ -1,4 +1,5 @@
 from flask import Flask, render_template
+import json
 
 app = Flask(__name__)
 
@@ -13,6 +14,13 @@ def about():
 @app.route('/contact')
 def contact():
     return render_template('contact.html')  
+
+@app.route('/items')
+def items():
+    items = json.load(open('items.json'))
+    if not items:
+        return render_template('items.html', items=['No items found'])
+    return render_template('items.html', items=items)
 
 if __name__ == '__main__':
     app.run(debug=True, port=5000)
