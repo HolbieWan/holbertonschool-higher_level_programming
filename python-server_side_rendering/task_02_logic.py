@@ -18,8 +18,6 @@ def contact():
 @app.route('/items')
 def items():
     items = json.load(open('items.json'))
-    if not items:
-        return render_template('items.html', items=['No items found'])
     return render_template('items.html', items=items)
 
 if __name__ == '__main__':
