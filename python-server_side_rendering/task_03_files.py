@@ -28,22 +28,6 @@ def items():
     return render_template('items.html', items=items)
 
 
-def read_json_file(filepath):
-    with open(filepath, 'r') as file:
-        return json.load(file)
-
-
-def read_csv_file(filepath):
-    products = []
-    with open(filepath, 'r') as file:
-        reader = csv.DictReader(file)
-        for row in reader:
-            row['id'] = int(row['id'])
-            row['price'] = float(row['price'])
-            products.append(row)
-    return products
-
-
 @app.route('/products')
 def products():
     source = request.args.get('source')
