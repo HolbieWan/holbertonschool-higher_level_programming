@@ -50,12 +50,15 @@ def products():
         return render_template('product_display.html', error="Wrong source")
 
     if product_id:
+        filtered_products = []
         for product in products:
             if product['id'] == product_id:
-                products = [product]
+                filtered_products.append(product)
        
-        if not products:
+        if not filtered_products:
             return render_template('product_display.html', error="Product not found")
+        else:
+            products = filtered_products
 
     return render_template('product_display.html', products=products)
 
