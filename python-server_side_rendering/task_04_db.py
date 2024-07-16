@@ -47,7 +47,7 @@ def products():
                 row['price'] = float(row['price'])
                 products.append(row)
         
-    elif source == 'db':
+    elif source == 'sql':
         connection = sqlite3.connect('products.db')
         cursor = connection.cursor()
         cursor.execute('SELECT * FROM products')
