@@ -3,10 +3,10 @@ document.addEventListener("DOMContentLoaded", function () {
     .then((response) => response.json())
     .then((data) => {
       const movieList = document.getElementById("list_movies");
-      data.results.forEach((movie) => {
+      for (let i = 0; i < data.results.length; i++) {
         let listItem = document.createElement("li");
-        listItem.textContent = movie.title;
+        listItem.textContent = data.results[i].title;
         movieList.appendChild(listItem);
-      });
+      }
     });
 });
