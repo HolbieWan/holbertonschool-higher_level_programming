@@ -47,7 +47,6 @@ class Rectangle(Shape):
 
     def area(self):
         """Calculate the area of the rectangle."""
-        py_value = math.pi
         return (self.width * self.height)
 
     def perimeter(self):
