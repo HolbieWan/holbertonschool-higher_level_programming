@@ -84,10 +84,6 @@ Not present in responses to HEAD requests or in certain status codes like 204 No
 <br> **Description:** Not Found
 <br> **Scenario:** When a requested page or resource isn’t available on the server.
 
-+ **Status Code: 404**
-<br> **Description:** Not Found
-<br> **Scenario:** When a requested page or resource isn’t available on the server.
-
 + **Status Code:200 OK:**
 <br> **Description:** The request has succeeded.
 <br> **Scenario:** It is commonly returned for successful GET or POST requests.

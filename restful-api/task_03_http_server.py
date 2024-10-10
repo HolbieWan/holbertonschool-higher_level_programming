@@ -5,15 +5,16 @@ import json
 
 
 class CustomRequestHandler(BaseHTTPRequestHandler):
-    """custom Handler subclass for server requests"""
+    """Custom Handler subclass for server requests"""
 
     def do_GET(self):
-        """Method to set custom responses for the get requests """
+        """Method to set custom responses for GET requests"""
         if self.path == '/':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"Hello, this is a simple API!")
+
         elif self.path == '/data':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
@@ -24,6 +25,7 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
                 "city": "New York"
             }
             self.wfile.write(json.dumps(sample_data).encode('utf-8'))
+
         elif self.path == '/info':
             self.send_response(200)
             self.send_header('Content-type', 'application/json')
@@ -33,19 +35,21 @@ class CustomRequestHandler(BaseHTTPRequestHandler):
                 "description": "A simple API built with http.server"
             }
             self.wfile.write(json.dumps(sample_info).encode('utf-8'))
+
         elif self.path == '/status':
             self.send_response(200)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"OK")
+
         else:
-            self.send_response(404, "Not Found")
+            self.send_response(404)
             self.send_header('Content-type', 'text/plain')
             self.end_headers()
             self.wfile.write(b"404 Not Found")
 
 
 if __name__ == "__main__":
-    httpd = HTTPServer(('localhost', 8000), CustomRequestHandler)
-    print("serving at port", 8000)
+    httpd = HTTPServer(('0.0.0.0', 8000), CustomRequestHandler)
+    print("Serving at port", 8000)
     httpd.serve_forever()
