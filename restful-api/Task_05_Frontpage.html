@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>Test Flask API</h1>
+
+    <!-- Login Form -->
+    <h2>Login</h2>
+    <label for="username">Username:</label>
+    <input type="text" id="username" name="username">
+    <label for="password">Password:</label>
+    <input type="password" id="password" name="password">
+    <button onclick="login()">Login</button>
+    <p id="login-result"></p>
+
+    <!-- Basic Auth Test -->
+    <h2>Basic Auth Protected Route</h2>
+    <button onclick="accessBasicAuth()">Access Basic Protected Route</button>
+    <p id="basic-auth-result"></p>
+
+    <!-- JWT Auth Test -->
+    <h2>JWT Auth Protected Route</h2>
+    <button onclick="accessJwtProtected()">Access JWT Protected Route</button>
+    <p id="jwt-auth-result"></p>
+
+    <!-- Admin-Only Test -->
+    <h2>Admin-Only Protected Route</h2>
+    <button onclick="accessAdminOnly()">Access Admin-Only Route</button>
+    <p id="admin-auth-result"></p>
+
+    <script>
+        let accessToken = '';
+
+        // Function to handle login
+        async function login() {
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            const response = await fetch('http://127.0.0.1:5000/login', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ username, password })
+            });
+
+            const data = await response.json();
+            if (response.ok) {
+                accessToken = data.access_token;
+                document.getElementById("login-result").innerText = "Login successful!";
+            } else {
+                document.getElementById("login-result").innerText = data.error;
+            }
+        }
+
+        // Function to access basic protected route (Basic Auth)
+        async function accessBasicAuth() {
+            const response = await fetch('http://127.0.0.1:5000/basic-protected', {
+                headers: {
+                    'Authorization': 'Basic ' + btoa('user1:password')
+                }
+            });
+            if (response.ok) {
+                document.getElementById("basic-auth-result").innerText = await response.text();
+            } else {
+                document.getElementById("basic-auth-result").innerText = "Access denied!";
+            }
+        }
+
+        // Function to access JWT protected route
+        async function accessJwtProtected() {
+            const response = await fetch('http://127.0.0.1:5000/jwt-protected', {
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+            if (response.ok) {
+                document.getElementById("jwt-auth-result").innerText = await response.text();
+            } else {
+                document.getElementById("jwt-auth-result").innerText = "Access denied!";
+            }
+        }
+
+        // Function to access admin-only route
+        async function accessAdminOnly() {
+            const response = await fetch('http://127.0.0.1:5000/admin-only', {
+                headers: {
+                    'Authorization': 'Bearer ' + accessToken
+                }
+            });
+            const data = await response.json();
+            if (response.ok) {
+                document.getElementById("admin-auth-result").innerText = data.message;
+            } else {
+                document.getElementById("admin-auth-result").innerText = data.error;
+            }
+        }
+    </script>
+</body>
+</html>
