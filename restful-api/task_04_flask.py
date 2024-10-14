@@ -28,7 +28,7 @@ def home():
     return "Welcome to the Flask API!"
 
 
-@app.route('/data')
+@app.route('/data', methods='GET')
 def data():
     """Endpoint returning a JSON response with dictionary keys (usernames)"""
     names = list(users.keys())
@@ -41,7 +41,7 @@ def status():
     return "OK"
 
 
-@app.route('/users/<username>')
+@app.route('/users/<username>', methods="GET")
 def get_user(username):
     """Endpoint returning a JSON response with the user details"""
     user = users.get(username)
