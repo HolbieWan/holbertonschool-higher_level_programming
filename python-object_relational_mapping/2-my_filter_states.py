@@ -31,7 +31,7 @@ def get_matching_states():
 
     # Perform a SELECT query
     my_query = "SELECT * FROM states WHERE\
-        BINARY name = '{}' ORDER BY id ASC".format(state_name)
+         name = '{}' ORDER BY id ASC".format(state_name)
     cursor.execute(my_query)
     rows = cursor.fetchall()
 
