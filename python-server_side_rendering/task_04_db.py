@@ -3,6 +3,7 @@ from flask import request
 import sqlite3
 import json
 import csv
+import os
 
 app = Flask(__name__)
 
@@ -31,8 +32,10 @@ def items():
 
 @app.route('/products')
 def products():
-    source = request.args.get('source')
-    product_id = request.args.get('id', type=int)
+    DEFAULT_SOURCE = os.getenv('SOURCE', 'json')
+    DEFAULT_ID = int(os.getenv("ID", 0))
+    source = request.args.get('source', DEFAULT_SOURCE)
+    product_id = request.args.get('id', default=DEFAULT_ID, type=int)
 
     if source == 'json':
         with open('products.json', 'r') as file:
@@ -54,7 +57,7 @@ def products():
         products = cursor.fetchall()
         cursor.close()
         connection.close()
-        products = [{'id': row[0], 'name': row[1], 'price': row[2]} for row in products]
+        products = [{'id': row[0], 'name': row[1], 'category': row[2], "price": row[3]} for row in products]
 
     else:
         return render_template('product_display.html', error="Wrong source")

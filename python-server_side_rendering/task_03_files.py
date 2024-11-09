@@ -2,6 +2,7 @@ from flask import Flask, render_template
 from flask import request
 import json
 import csv
+import os
 
 app = Flask(__name__)
 
@@ -30,7 +31,8 @@ def items():
 
 @app.route('/products')
 def products():
-    source = request.args.get('source')
+    DEFAULT_SOURCE = os.getenv('SOURCE', 'csv')
+    source = request.args.get('source', DEFAULT_SOURCE)
     product_id = request.args.get('id', type=int)
 
     if source == 'json':
