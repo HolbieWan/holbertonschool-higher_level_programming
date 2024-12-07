@@ -1,9 +1,7 @@
-# Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
+# Python - Inheritance
 
-## General
-+What is a superclass, baseclass or parentclass
-+What is a subclass
++ What is a superclass, baseclass or parentclass
++ What is a subclass
 + How to list all attributes and methods of a class or instance
 + When can an instance have new attributes
 + How to inherit class from another

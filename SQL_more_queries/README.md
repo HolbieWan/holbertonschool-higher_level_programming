@@ -1,7 +1,4 @@
-# Learning Objectives
-At the end of this project, you are expected to be able to explain to anyone, without the help of Google:
-
-## General
+# SQL - More queries
 
 + How to create a new MySQL user
 + How to manage privileges for a user to a database or table
